@@ -26,44 +26,28 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
-            PhotographerCard()
+            LayoutsCodeLabTheme {
+                LayoutsCodeLab()
+            }
         }
     }
 }
 
 @Composable
-fun PhotographerCard(modifier: Modifier = Modifier){
-    Row(modifier
-        .padding(8.dp)
-        .clip(RoundedCornerShape(4.dp))
-        .background(MaterialTheme.colors.surface)
-        .clickable(onClick = { /* Ignoring onClick */})
-        .padding(16.dp)
-    ) {
-        Surface(
-            modifier = Modifier.size(50.dp),
-            shape = CircleShape,
-            color = MaterialTheme.colors.onSurface.copy(alpha = 0.2f)
-        ) {
-            // image goes here
-        }
-        Column(
-            modifier = Modifier
-                .padding(start = 8.dp)
-                .align(Alignment.CenterVertically)
-        ) {
-            Text("Alfred Sisley", fontWeight = FontWeight.Bold)
-            CompositionLocalProvider(LocalContentAlpha provides ContentAlpha.medium) {
-                Text("3 minutes ago", style = MaterialTheme.typography.body2)
-            }
+fun LayoutsCodeLab(){
+    Scaffold { innerPadding ->
+        Column(modifier = Modifier.padding(innerPadding)) {
+            Text(text = "Hi there!")
+            Text(text = "Thanks for going through the Layouts codelab")
         }
     }
 }
 
 @Preview
 @Composable
-fun PhotographerCardPreview(){
-    LayoutsCodeLabTheme{
-        PhotographerCard()
+fun LayoutsCodelabPreview(){
+    LayoutsCodeLabTheme {
+        LayoutsCodeLab()
     }
 }
+
